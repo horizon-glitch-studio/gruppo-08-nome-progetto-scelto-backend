@@ -2,7 +2,7 @@
 
 29 ottobre 2026 · Mondir
 
-Il backend è un'applicazione Java 21 con Spring Boot 3 e PostgreSQL: uno stack richiesto in gran parte dal brief, completato da librerie scelte per sicurezza, test e documentazione delle API.
+Il backend è un'applicazione Java 25 con Spring Boot 4.1.2 e PostgreSQL: uno stack richiesto in gran parte dal brief, completato da librerie scelte per sicurezza, test e documentazione delle API.
 
 ## Linguaggio e strumenti di base
 
@@ -10,8 +10,8 @@ Java, Spring Boot e GitHub sono imposti dal brief; le altre scelte sono gli stan
 
 | Tecnologia | Ruolo | Perché |
 | --- | --- | --- |
-| Java 21 | Linguaggio della logica lato server | Richiesto dal brief. È la versione LTS (supporto a lungo termine) più recente supportata da Spring Boot 3, e porta record e pattern matching, utili per modellare carte, scontri e risultati del motore in poche righe. |
-| Spring Boot 3 | Framework per le API REST e la logica di business | Richiesto dal brief. Configura in automatico server web, database e sicurezza, quindi il tempo va nelle regole del gioco e non nell'infrastruttura. |
+| Java 25 | Linguaggio della logica lato server | Richiesto dal brief. |
+| Spring Boot 4.1.2 | Framework per le API REST e la logica di business | Richiesto dal brief. Configura in automatico server web, database e sicurezza, quindi il tempo va nelle regole del gioco e non nell'infrastruttura. |
 | Maven | Build e gestione delle dipendenze | È lo strumento predefinito di Spring Initializr. Permette di tenere il motore di gioco in un modulo separato, come chiede il brief ("componente Java isolato"). |
 | Spring Data JPA + Hibernate 6 | Accesso ai dati | I repository generano le query più comuni senza SQL scritto a mano. Hibernate 6 mappa direttamente le colonne `jsonb` di PostgreSQL. |
 | Bean Validation (Jakarta Validation) | Validazione dell'input | I vincoli si scrivono come annotazioni sui DTO (`@NotNull`, `@Size`, `@Min`) e Spring rifiuta le richieste non valide prima che arrivino alla logica. |
@@ -32,7 +32,7 @@ Ogni dipendenza copre un requisito del brief o una funzionalità decisa dal team
 | Spring Validation (Hibernate Validator) | Validazione delle richieste e vincoli server-side | Il brief chiede che il portale verifichi i vincoli dei mazzi: la validazione lato server è l'unica affidabile, perché quella del frontend si può aggirare. |
 | JUnit 5 & AssertJ | Test del motore di gioco | Il brief richiede il motore isolato e coperto da test JUnit. AssertJ rende le verifiche leggibili come frasi, utile per controllare log di partita lunghi e casi limite. |
 | Lombok | Meno codice ripetitivo | Genera getter, setter, costruttori e builder: le entità restano corte e leggibili. Va usato da tutti allo stesso modo, deciso all'inizio. |
-| Springdoc OpenAPI (Swagger UI) | Documentazione interattiva delle API | È la libreria che produce la documentazione Swagger richiesta dal brief, compatibile con Spring Boot 3. |
+| Springdoc OpenAPI (Swagger UI) | Documentazione interattiva delle API | È la libreria che produce la documentazione Swagger richiesta dal brief, compatibile con Spring Boot 4.1.2. |
 
 Le funzionalità decise richiedono due dipendenze che la lista non nomina: Spring WebSocket (sfide in tempo reale e amici online) e Flyway (migrazioni versionate dello schema e dati iniziali).
 
